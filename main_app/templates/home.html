@@ -3,5 +3,33 @@
 
 <h1>Welcome to PackAnimal</h1>
 <p>Lets have fun with this project!</p>
+<div class="row" class="white">
+        <div class="col s12 m6">
+          <div class="card blue-grey darken-1">
+            <div class="card-content white-text">
+              <span class="card-title"> Welcome Back! </span>
+              <p>
+                <form method="post" action="{% url 'login' %}">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <input type="submit" class="btn" value="login">
+                    <input type="hidden" name="next" value="{{ next }}">
+                  </form>
+              </p>
+            </div>
+            <div class="card-action">
+                <p>
+                    Need an account ?
+                </p>
+              {% if error_message %}<p class="red-text">{{ error_message }}</p>{% endif %}
 
+    <form method="post" action="{% url 'signup' %}">
+        {% csrf_token %}
+          {{ form.as_p }}
+        <input type="submit" class="btn" value="sign-up">
+    </form>
+            </div>
+          </div>
+        </div>
+      </div>
 {% endblock %}
